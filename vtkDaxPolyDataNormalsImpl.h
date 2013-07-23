@@ -28,6 +28,7 @@
 #include "vtkMath.h"
 #include "vtkMergePoints.h"
 #include "vtkObjectFactory.h"
+#include "vtkPoints.h"
 #include "vtkPointData.h"
 #include "vtkPolyData.h"
 #include "vtkShortArray.h"
@@ -40,15 +41,9 @@
 #include "vtkIncrementalPointLocator.h"
 #include "vtkUnstructuredGrid.h"
 
-#ifdef DAX_DEVICE_ADAPTER
-	//don't include the vtk header that will redefine the
-	//default dax adapter
-	#define _VTK_DAX_CONFIG_H_
-#endif
+#include "vtkAcceleratorsDaxModule.h" //required for correct implementation
+#include "vtkDaxConfig.h"
 
-
-#include <vtkAcceleratorsDaxModule.h> //required for correct implementation
-#include <vtkUnstructuredGrid.h>
 #include <dax/cont/Scheduler.h>
 #include <dax/cont/ArrayHandle.h>
 #include <dax/cont/UnstructuredGrid.h>
